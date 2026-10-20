@@ -2,12 +2,9 @@ const slides = [...document.querySelectorAll('.slide')];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const counter = document.getElementById('current-slide');
 const title = document.getElementById('current-title');
-const time = document.getElementById('slide-time');
 const progress = document.getElementById('progress-fill');
 const previous = document.getElementById('prev-slide');
 const next = document.getElementById('next-slide');
-const notes = document.getElementById('speaker-notes');
-const notesToggle = document.getElementById('notes-toggle');
 const fullscreenToggle = document.getElementById('fullscreen-toggle');
 const dialog = document.getElementById('image-dialog');
 let current = 0;
@@ -21,12 +18,9 @@ function updateSlide(index) {
   const slide = slides[index];
   counter.textContent = String(index + 1).padStart(2, '0');
   title.textContent = slide.dataset.title;
-  time.textContent = slide.dataset.time;
   progress.style.width = `${((index + 1) / slides.length) * 100}%`;
   previous.disabled = index === 0;
   next.disabled = index === slides.length - 1;
-  document.getElementById('note-heading').textContent = `${slide.dataset.time} / ${slide.dataset.title}`;
-  document.getElementById('note-content').textContent = slide.dataset.notes;
   for (const link of document.querySelectorAll('[data-chapter-link]')) {
     const active = link.dataset.chapterLink === slide.dataset.chapter;
     link.classList.toggle('active', active);
@@ -62,16 +56,6 @@ window.addEventListener('hashchange', detectSlide);
 window.addEventListener('load', detectSlide);
 previous.addEventListener('click', () => goToSlide(current - 1));
 next.addEventListener('click', () => goToSlide(current + 1));
-
-function toggleNotes(open = notes.hidden) {
-  notes.hidden = !open;
-  notesToggle.setAttribute('aria-expanded', String(open));
-}
-notesToggle.addEventListener('click', () => toggleNotes());
-document.getElementById('close-notes').addEventListener('click', () => {
-  toggleNotes(false);
-  notesToggle.focus();
-});
 
 function announce(message) {
   const status = document.getElementById('status');
@@ -121,9 +105,7 @@ dialog.addEventListener('click', (event) => { if (event.target === dialog) dialo
 document.addEventListener('keydown', (event) => {
   if (event.altKey || event.ctrlKey || event.metaKey || dialog.open) return;
   if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
-  if (event.key === 'Escape' && !notes.hidden) { toggleNotes(false); return; }
   const interactive = event.target.closest('button, a, [role="button"]');
-  if (event.key.toLowerCase() === 'n') { event.preventDefault(); toggleNotes(); return; }
   if (event.key.toLowerCase() === 'f') { event.preventDefault(); toggleFullscreen(); return; }
   if (interactive) return;
   if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(event.key)) {
