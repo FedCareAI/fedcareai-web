@@ -11,7 +11,7 @@
   <title>FedCareAI / Federated healthcare research</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/fonts/SpaceGrotesk.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./styles.4d6cd3816848.css">
+  <link rel="stylesheet" href="./styles.bb19beb93fb1.css">
   <script src="./script.eecdd34ff26f.js" defer></script>
 </head>
 <body>
@@ -64,6 +64,36 @@
 
     <section class="slide" id="two-workflows" data-chapter="workflow" data-title="Validate or train?" aria-labelledby="two-title">
       <div class="slide-inner"><p class="eyebrow">Two different research questions</p><h2 id="two-title">Are we <span class="blue">testing</span><br>or <span class="green">learning?</span></h2><div class="comparison"><article><span class="mini-label blue">External validation</span><h3>“Does it work here?”</h3><p>Fixed model → local evaluation</p><div class="output-line"><span>Returns</span><strong>Performance metrics</strong></div><p class="small">Model parameters stay unchanged.</p></article><article><span class="mini-label green">Federated training</span><h3>“Can we learn together?”</h3><p>Shared model → local training</p><div class="output-line"><span>Returns</span><strong>Numeric model weights</strong></div><p class="small">Compatible weights are combined for the next round.</p></article></div></div>
+    </section>
+
+    <section class="slide system-slide" id="library-architecture" data-chapter="workflow" data-title="Library architecture" aria-labelledby="library-architecture-title">
+      <div class="slide-inner"><p class="eyebrow">Under the hood / The Python library</p><h2 id="library-architecture-title">One local engine.<br><span class="gradient-text">Two ways in.</span></h2>
+        <div class="systems-grid">
+          <div class="system-stack" aria-label="Library layers, from entry points to framework adapters">
+            <div class="system-pair"><article class="system-box"><span class="mini-label blue">Command line</span><h3>Typer CLI</h3><p><code>fedcare local …</code></p></article><article class="system-box"><span class="mini-label green">Python code</span><h3>Public API</h3><p><code>from fedcareai.api import …</code></p></article></div>
+            <div class="system-arrow" aria-hidden="true">↓</div>
+            <article class="system-box system-core"><span class="mini-label">Shared local workflow</span><h3>Validate · train · aggregate · export</h3><p>Pydantic data contracts + CSV schema checks</p></article>
+            <div class="system-arrow" aria-hidden="true">↓</div>
+            <div class="system-pair"><article class="system-box"><span class="mini-label blue">Model execution</span><h3>scikit-learn / Keras</h3><p>Load models, evaluate, train locally</p></article><article class="system-box"><span class="mini-label green">Numeric interchange</span><h3>NumPy weights</h3><p>Compatible arrays in <code>.npz</code> archives</p></article></div>
+          </div>
+          <aside class="system-explainer"><div><span class="mini-label green">On the researcher's machine</span><h3>Local files in.<br>Agreed outputs out.</h3><p>CSV + model + contract → metrics, numeric weights, or an exported model.</p></div><div><span class="mini-label blue">Optional connection</span><h3>HTTP client</h3><p><code>fedcare task</code> pulls tasks and submits results to a platform. Standalone execution needs no server.</p></div></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide system-slide" id="platform-architecture" data-chapter="workflow" data-title="Platform architecture" aria-labelledby="platform-architecture-title">
+      <div class="slide-inner"><p class="eyebrow">Under the hood / The coordination platform</p><h2 id="platform-architecture-title">A web workspace.<br><span class="gradient-text">An API between sites.</span></h2>
+        <div class="systems-grid">
+          <div class="system-stack" aria-label="Browser and participant CLI communicate with FastAPI, which stores research metadata and model artifacts">
+            <div class="system-pair"><article class="system-box"><span class="mini-label blue">Browser</span><h3>React + TypeScript</h3><p>Projects, models, collaborators, results</p></article><article class="system-box"><span class="mini-label green">Participant's machine</span><h3>Python CLI</h3><p>Local data + local model execution</p></article></div>
+            <div class="system-arrow exchange"><span>↕ HTTP / JSON + artifact files</span></div>
+            <article class="system-box system-core"><span class="mini-label">FastAPI backend</span><h3>Coordinate the research workflow</h3><p>Authentication &amp; project access · tasks &amp; rounds · results &amp; numeric averaging</p></article>
+            <div class="system-arrow" aria-hidden="true">↓</div>
+            <div class="system-pair"><article class="system-box"><span class="mini-label blue">SQLModel / SQLAlchemy</span><h3>PostgreSQL</h3><p>Users, projects, tasks, submissions<br>SQLite for local development</p></article><article class="system-box"><span class="mini-label green">Artifact storage</span><h3>Persistent files</h3><p>Model artifacts + numeric updates<br>Checksums + file references</p></article></div>
+          </div>
+          <aside class="system-explainer"><div><span class="mini-label green">The execution boundary</span><h3>Raw CSVs stay<br>at each site.</h3><p>The platform receives submitted metrics or numeric weights, plus agreed metadata.</p></div><div><span class="mini-label blue">Separate applications</span><h3>Connected over HTTP.</h3><p>The backend does not import the Python library. It handles its own numeric archive checks and averaging.</p></div></aside>
+        </div>
+      </div>
     </section>
 
     <section class="slide platform-slide" id="platform" data-chapter="workflow" data-title="The platform demo" aria-labelledby="platform-title">
@@ -161,7 +191,7 @@ aggregate_updates(
     </section>
   </main>
 
-  <footer class="presentation-controls"><div class="slide-counter"><span id="current-slide">01</span><span class="counter-separator">/</span><span id="total-slides">19</span><span class="current-title" id="current-title">FedCareAI</span></div><div class="control-middle"><span class="key-hint">↑ ↓ to navigate</span></div><div class="control-buttons"><button type="button" id="fullscreen-toggle" aria-label="Enter fullscreen" aria-keyshortcuts="f">Fullscreen <kbd>F</kbd></button><span class="control-divider"></span><button type="button" id="prev-slide" aria-label="Previous slide">↑</button><button type="button" id="next-slide" aria-label="Next slide">↓</button></div><div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div></footer>
+  <footer class="presentation-controls"><div class="slide-counter"><span id="current-slide">01</span><span class="counter-separator">/</span><span id="total-slides">21</span><span class="current-title" id="current-title">FedCareAI</span></div><div class="control-middle"><span class="key-hint">↑ ↓ to navigate</span></div><div class="control-buttons"><button type="button" id="fullscreen-toggle" aria-label="Enter fullscreen" aria-keyshortcuts="f">Fullscreen <kbd>F</kbd></button><span class="control-divider"></span><button type="button" id="prev-slide" aria-label="Previous slide">↑</button><button type="button" id="next-slide" aria-label="Next slide">↓</button></div><div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div></footer>
   <dialog class="image-dialog" id="image-dialog" aria-labelledby="image-caption"><button type="button" id="close-image" aria-label="Close screenshot">Close <kbd>Esc</kbd></button><img id="expanded-image" alt=""><p id="image-caption"></p></dialog>
   <div class="toast" id="status" role="status"></div>
 </body>
