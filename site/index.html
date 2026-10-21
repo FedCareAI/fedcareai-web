@@ -3,39 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A reusable presentation about FedCareAI: Python workflows for federated healthcare research, external validation, and local data.">
+  <meta name="description" content="A hospital collaboration story and a practical Python workflow for federated healthcare research, with local data and explicit governance boundaries.">
   <meta name="theme-color" content="#070a0d">
-  <meta property="og:title" content="FedCareAI / Federated healthcare research">
+  <meta property="og:title" content="No Patient Data Left the Hospital: Building a Sovereign Python Workflow for Federated Healthcare AI">
   <meta property="og:description" content="Move the model. Keep the data. A talk by Vedant Bahel.">
   <meta property="og:type" content="website">
-  <title>FedCareAI / Federated healthcare research</title>
+  <title>No Patient Data Left the Hospital: Building a Sovereign Python Workflow for Federated Healthcare AI</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/fonts/SpaceGrotesk.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="./styles.bb19beb93fb1.css">
+  <link rel="stylesheet" href="./styles.29f0a693f170.css">
   <script src="./script.eecdd34ff26f.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to presentation</a>
   <header class="topbar">
-    <a href="#intro" class="wordmark" aria-label="FedCareAI, first slide"><span class="logo-mark" aria-hidden="true">✳</span> FedCare<span>AI</span></a>
-    <nav aria-label="Talk chapters"><a href="#problem" data-chapter-link="problem">01 <span>The problem</span></a><a href="#collaboration" data-chapter-link="workflow">02 <span>The workflow</span></a><a href="#different" data-chapter-link="healthcare">03 <span>For healthcare</span></a></nav>
+    <a href="#intro" class="wordmark" aria-label="Presentation, first slide"><span class="logo-mark" aria-hidden="true">✳</span> Sovereign <span>Python</span></a>
+    <nav aria-label="Talk chapters"><a href="#story-model" data-chapter-link="problem">01 <span>The problem</span></a><a href="#collaboration" data-chapter-link="workflow">02 <span>The workflow</span></a><a href="#different" data-chapter-link="healthcare">03 <span>For healthcare</span></a></nav>
     <span class="event-label"><span class="live-dot"></span> Federated research</span>
   </header>
   <main id="main">
-    <section class="slide title-slide" id="intro" data-chapter="intro" data-title="FedCareAI" aria-labelledby="title">
+    <section class="slide title-slide abstract-title" id="intro" data-chapter="intro" data-title="No Patient Data Left the Hospital" aria-labelledby="title">
       <div class="slide-inner">
         <p class="eyebrow"><span class="live-dot"></span> Federated research <span class="eyebrow-divider">/</span> Python × Healthcare</p>
-        <h1 id="title">FedCare<span class="gradient-text">AI</span><span class="title-period">.</span></h1>
-        <p class="title-line">Move the model.<br><span>Keep the data.</span></p>
+        <h1 id="title">No Patient Data<br>Left the <span class="gradient-text">Hospital</span></h1>
+        <p class="title-line">Building a Sovereign Python Workflow<br>for Federated Healthcare AI</p>
         <div class="title-meta"><span>Vedant Bahel</span><span>Federated healthcare research</span></div>
-        <a class="scroll-cue" href="#what">Scroll to begin <span aria-hidden="true">↓</span></a>
+        <a class="scroll-cue" href="#story-model">Start with a story <span aria-hidden="true">↓</span></a>
       </div>
       <div class="orbital" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><span class="orbit-core">✳</span><i class="satellite s1"></i><i class="satellite s2"></i><i class="satellite s3"></i></div>
       <span class="background-caption" aria-hidden="true">LOCAL DATA. SHARED LEARNING.</span>
     </section>
 
-    <section class="slide" id="what" data-chapter="intro" data-title="What is it?" aria-labelledby="what-title">
-      <div class="slide-inner"><p class="eyebrow">First, the idea</p><h2 id="what-title">What is <span class="gradient-text">FedCareAI?</span></h2><p class="lead large-copy">Python workflows for researchers to <span class="bright">test and train models across centres</span> while keeping raw data local.</p><div class="definition-row"><div><span class="mini-label">The library</span><h3>Compute locally.</h3><p>Python API + command-line tools</p></div><span class="definition-plus" aria-hidden="true">+</span><div><span class="mini-label">The platform</span><h3>Coordinate together.</h3><p>Projects, models, tasks, results</p></div></div></div>
+    <section class="slide story-slide" id="story-model" data-chapter="problem" data-title="A promising model" aria-labelledby="story-model-title">
+      <div class="slide-inner"><p class="eyebrow chapter-label">01 / Imagine this hospital collaboration</p><div class="split"><div><h2 id="story-model-title">A small dataset.<br>A <span class="gradient-text">promising model.</span></h2><p class="lead">A pediatric research team builds a model using data from its own hospital.</p><p class="story-question">The local results look encouraging.<br>What should happen next?</p></div><div class="story-scene"><span class="mini-label blue">Hospital A / Development site</span><div class="story-records" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><h3>Local data → model</h3><p>One hospital. One population.<br>One set of recording practices.</p><span class="scenario-label">Hypothetical research scenario</span></div></div></div>
+    </section>
+
+    <section class="slide story-slide" id="story-question" data-chapter="problem" data-title="Would it work here?" aria-labelledby="story-question-title">
+      <div class="slide-inner"><p class="eyebrow">The question beyond the development dataset</p><h2 id="story-question-title">“Would it work<br>at <span class="gradient-text">your hospital?</span>”</h2><div class="story-exchange"><article><span class="mini-label blue">Hospital A / Model developer</span><h3>We have a model.</h3><p>We need evidence beyond our own centre.</p></article><span class="exchange-symbol" aria-hidden="true">↔</span><article><span class="mini-label green">Hospital B / Research collaborator</span><h3>We have relevant data.</h3><p>Different patients. Different workflows.</p></article></div><p class="bottom-line">Before wider use, <span class="bright">test the assumptions in another setting.</span></p><span class="scenario-label">Hypothetical research scenario</span></div>
+    </section>
+
+    <section class="slide story-slide story-reply" id="story-boundary" data-chapter="problem" data-title="The records cannot move" aria-labelledby="story-boundary-title">
+      <div class="slide-inner"><p class="eyebrow">The collaboration reaches a boundary</p><h2 id="story-boundary-title">“We can collaborate.<br>We cannot just<br><span class="gradient-text">send the records.</span>”</h2><p class="lead">The research question can be shared.<br>The patient dataset cannot simply follow it.</p><p class="story-question">If the data cannot come to the model,<br>could the model go to the data?</p><span class="scenario-label">Illustrative dialogue / hypothetical research scenario</span></div>
     </section>
 
     <section class="slide" id="problem" data-chapter="problem" data-title="The problem" aria-labelledby="problem-title">
@@ -56,6 +64,10 @@
 
     <section class="slide statement-slide pivot-slide" id="hence" data-chapter="workflow" data-title="Hence, FedCareAI" aria-labelledby="hence-title">
       <div class="slide-inner"><p class="eyebrow chapter-label">02 / The workflow</p><p class="pre-title">Hence,</p><h2 id="hence-title">FedCare<span class="gradient-text">AI.</span></h2><p class="lead">Bring the computation to the data.</p><div class="tag-row"><span>Multi-centre collaboration</span><span>Local execution</span><span>Agreed outputs</span></div></div>
+    </section>
+
+    <section class="slide" id="what" data-chapter="workflow" data-title="What is it?" aria-labelledby="what-title">
+      <div class="slide-inner"><p class="eyebrow">The idea, in practice</p><h2 id="what-title">What is <span class="gradient-text">FedCareAI?</span></h2><p class="lead large-copy">Python workflows for researchers to <span class="bright">test and train models across centres</span> while keeping raw data local.</p><div class="definition-row"><div><span class="mini-label">The library</span><h3>Compute locally.</h3><p>Python API + command-line tools</p></div><span class="definition-plus" aria-hidden="true">+</span><div><span class="mini-label">The platform</span><h3>Coordinate together.</h3><p>Projects, models, tasks, results</p></div></div></div>
     </section>
 
     <section class="slide" id="collaboration" data-chapter="workflow" data-title="Who does what?" aria-labelledby="collaboration-title">
@@ -191,7 +203,7 @@ aggregate_updates(
     </section>
   </main>
 
-  <footer class="presentation-controls"><div class="slide-counter"><span id="current-slide">01</span><span class="counter-separator">/</span><span id="total-slides">21</span><span class="current-title" id="current-title">FedCareAI</span></div><div class="control-middle"><span class="key-hint">↑ ↓ to navigate</span></div><div class="control-buttons"><button type="button" id="fullscreen-toggle" aria-label="Enter fullscreen" aria-keyshortcuts="f">Fullscreen <kbd>F</kbd></button><span class="control-divider"></span><button type="button" id="prev-slide" aria-label="Previous slide">↑</button><button type="button" id="next-slide" aria-label="Next slide">↓</button></div><div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div></footer>
+  <footer class="presentation-controls"><div class="slide-counter"><span id="current-slide">01</span><span class="counter-separator">/</span><span id="total-slides">24</span><span class="current-title" id="current-title">No Patient Data Left the Hospital</span></div><div class="control-middle"><span class="key-hint">↑ ↓ to navigate</span></div><div class="control-buttons"><button type="button" id="fullscreen-toggle" aria-label="Enter fullscreen" aria-keyshortcuts="f">Fullscreen <kbd>F</kbd></button><span class="control-divider"></span><button type="button" id="prev-slide" aria-label="Previous slide">↑</button><button type="button" id="next-slide" aria-label="Next slide">↓</button></div><div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div></footer>
   <dialog class="image-dialog" id="image-dialog" aria-labelledby="image-caption"><button type="button" id="close-image" aria-label="Close screenshot">Close <kbd>Esc</kbd></button><img id="expanded-image" alt=""><p id="image-caption"></p></dialog>
   <div class="toast" id="status" role="status"></div>
 </body>
